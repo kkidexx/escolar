@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <meta charset="UTF-8">
+    <title>Bienvenido - Sistema de Gestión Académica</title>
+</head>
+<body>
+    <div class="menu">
+        <div class="welcome-container">
+            <img src="https://gimnasioamericano.com/wp-content/uploads/2022/02/GESTION.png" alt="Imagen de bienvenida" />
+            <h1>Bienvenido al Sistema de Gestión Académica</h1>
+            <p>Selecciona una opción para gestionar los diferentes recursos:</p>
+            <div class="options">
+                <a href="/aulas" target="contentFrame">Gestión de Aulas</a>
+                <a href="/cursos" target="contentFrame">Gestión de Cursos</a>
+                <a href="/estudiantes" target="contentFrame">Gestión de Estudiantes</a>
+                <a href="/matriculas" target="contentFrame">Gestión de Matrículas</a>
+                <a href="/profesores" target="contentFrame">Gestión de Profesores</a>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <iframe src="" name="contentFrame"></iframe>
+    </div>
+</body>
+</html>

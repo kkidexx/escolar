@@ -1,0 +1,167 @@
+/* Estilos generales */
+body {
+    background-color: #1c1c1c; /* Fondo oscuro más intenso */
+    font-family: 'Poppins', sans-serif;
+    color: #ecf0f1;
+    margin: 0;
+    padding: 20px;
+    overflow-x: hidden; /* Evitar scroll horizontal */
+}
+
+h1, h2 {
+    text-align: center;
+    color: #f1c40f; /* Color dorado */
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-shadow: 0px 5px 10px rgba(255, 215, 0, 0.6); /* Sombra dorada */
+}
+
+/* Estilos del formulario */
+form {
+    background: linear-gradient(145deg, #2c3e50, #34495e); /* Fondo degradado oscuro */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5); /* Sombra intensa */
+    margin-bottom: 40px;
+    animation: fadeIn 0.5s ease-out; /* Animación de entrada */
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #f39c12; /* Naranja potente */
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+input[type="text"], input[type="number"] {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: #555;
+    color: #ffffff;
+    box-shadow: inset 0px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+input[type="text"]:focus, input[type="number"]:focus {
+    outline: none;
+    background-color: #666;
+    box-shadow: 0px 0px 10px rgba(255, 215, 0, 0.6); /* Glow amarillo */
+}
+
+/* Botón */
+.btn {
+    background-color: #8e44ad; /* Botón púrpura intenso */
+    color: #ffffff;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    letter-spacing: 2px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0px 10px 20px rgba(142, 68, 173, 0.6); /* Sombra púrpura */
+}
+
+.btn:hover {
+    background-color: #9b59b6; /* Púrpura más claro */
+    transform: translateY(-5px); /* Efecto de "elevación" */
+}
+
+/* Tabla neón con efectos avanzados */
+.neon-table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 0 35px rgba(0, 255, 255, 0.8), inset 0 0 20px rgba(0, 255, 255, 0.2); /* Sombra exterior e interior neón */
+    animation: glow 1.5s infinite alternate; /* Efecto de parpadeo neón */
+    border-radius: 15px; /* Bordes redondeados */
+    overflow: hidden; /* Evitar desbordamiento en bordes redondeados */
+}
+
+.neon-table th, .neon-table td {
+    border: 1px solid rgba(52, 152, 219, 0.4); /* Borde neón semi-transparente */
+    padding: 20px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 18px; /* Texto más grande */
+    text-shadow: 0px 0px 10px rgba(52, 152, 219, 0.8); /* Sombra de texto más intensa */
+    transition: color 0.3s ease, box-shadow 0.3s ease;
+    background: rgba(44, 62, 80, 0.6); /* Fondo semi-transparente para un efecto futurista */
+}
+
+.neon-table th {
+    background: linear-gradient(145deg, #3498db, #2980b9); /* Cabecera con degradado neón */
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 3px solid rgba(0, 255, 255, 0.8); /* Borde inferior neón */
+}
+
+.neon-table td {
+    position: relative;
+}
+
+.neon-table tbody tr:hover td {
+    background: rgba(41, 128, 185, 0.9); /* Hover con fondo más intenso */
+    color: #ecf0f1;
+    box-shadow: 0px 0px 20px rgba(52, 152, 219, 0.8); /* Sombra azul neón */
+    cursor: pointer;
+}
+
+.neon-table td::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -15px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(52, 152, 219, 0.8); /* Esferas neón en el borde izquierdo */
+    transform: translateY(-50%);
+    box-shadow: 0px 0px 10px rgba(52, 152, 219, 0.6); /* Glow en las esferas */
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glow {
+    from { box-shadow: 0 0 20px rgba(0, 255, 255, 0.5); }
+    to { box-shadow: 0 0 40px rgba(0, 255, 255, 1); }
+}
+
+/* Efectos avanzados al hacer clic en una fila */
+.neon-table tbody tr:active {
+    transform: scale(0.98); /* Efecto de clic */
+    box-shadow: 0px 0px 30px rgba(52, 152, 219, 0.8), inset 0px 0px 20px rgba(52, 152, 219, 0.5); /* Glow más intenso */
+}
+
+/* Enlaces de acción */
+.action-btn {
+    color: #1abc9c;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    box-shadow: 0px 5px 10px rgba(0, 255, 255, 0.5); /* Sombra neón */
+}
+
+.action-btn:hover {
+    background-color: #16a085;
+    color: #ffffff;
+    transform: translateY(-3px); /* Efecto de elevación */
+}
+
+.action-btn.delete:hover {
+    background-color: #e74c3c;
+    color: #ffffff;
+    box-shadow: 0px 0px 15px rgba(231, 76, 60, 0.7); /* Sombra roja intensa */
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Matrículas</title>
+    <link rel="stylesheet" href="/styles.css"> <!-- Opcional, tu archivo CSS -->
+</head>
+<body>
+    <h1>Gestión de Matrículas</h1>
+
+    <!-- Formulario para agregar nueva matrícula -->
+    <h2>Agregar Matrícula</h2>
+    <form th:action="@{/matriculas/guardar}" th:object="${nuevaMatricula}" method="post">
+        <label for="fechas">Fechas:</label>
+        <input type="text" id="fechas" th:field="*{fechas}" placeholder="Ingresar fechas" required><br>
+
+        <label for="estado">Estado:</label>
+        <input type="text" id="estado" th:field="*{estado}" placeholder="Ingresar estado" required><br>
+
+        <button type="submit">Guardar Matrícula</button>
+    </form>
+
+    <!-- Lista de matrículas existentes -->
+    <h2>Lista de Matrículas</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Fechas</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="matricula : ${matriculas}">
+                <td th:text="${matricula.idMatricula}"></td>
+                <td th:text="${matricula.fechas}"></td>
+                <td th:text="${matricula.estado}"></td>
+                <td>
+                    <a th:href="@{/matriculas/editar/{id}(id=${matricula.idMatricula})}">Editar</a>
+                    <a th:href="@{/matriculas/eliminar/{id}(id=${matricula.idMatricula})}" onclick="return confirm('¿Estás seguro de eliminar esta matrícula?');">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Formulario para editar una matrícula -->
+    <h2>Editar Matrícula</h2>
+    <div th:if="${matricula}">
+        <form th:action="@{/matriculas/guardar}" th:object="${matricula}" method="post">
+            <input type="hidden" th:field="*{idMatricula}" />
+
+            <label for="fechas">Fechas:</label>
+            <input type="text" id="fechas" th:field="*{fechas}" required><br>
+
+            <label for="estado">Estado:</label>
+            <input type="text" id="estado" th:field="*{estado}" required><br>
+
+            <button type="submit">Guardar Cambios</button>
+        </form>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!-- aulas.html -->
+<link rel="stylesheet" th:href="@{/aulastyl.css}" />
+
+<h1>Gestión de Aulas</h1>
+<!-- Formulario para agregar o editar un aula -->
+<form th:action="@{/aulas/guardarAula}" th:object="${aula}" method="post">
+    <input type="hidden" th:field="*{idAula}"/>
+    <div class="form-group">
+        <label for="nombreAula">Nombre del Aula:</label>
+        <input type="text" id="nombreAula" th:field="*{nombreAula}" required/>
+    </div>
+    <div class="form-group">
+        <label for="capacidad">Capacidad:</label>
+        <input type="number" id="capacidad" th:field="*{capacidad}" required/>
+    </div>
+    <div>
+        <button type="submit" class="btn">Guardar</button>
+    </div>
+</form>
+
+<h2>Lista de Aulas</h2>
+<table class="neon-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre del Aula</th>
+            <th>Capacidad</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="aula : ${aulas}">
+            <td th:text="${aula.idAula}"></td>
+            <td th:text="${aula.nombreAula}"></td>
+            <td th:text="${aula.capacidad}"></td>
+            <td>
+                <a th:href="@{/aulas/edit/{idAula}(idAula=${aula.idAula})}" class="action-btn">Editar</a> |
+                <a th:href="@{/aulas/delete/{idAula}(idAula=${aula.idAula})}" class="action-btn delete" 
+                   onclick="return confirm('¿Estás seguro de que quieres eliminar esta aula?');">Eliminar</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
