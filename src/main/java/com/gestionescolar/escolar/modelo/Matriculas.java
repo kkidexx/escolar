@@ -9,6 +9,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
 
 @Data
 @Entity
@@ -20,8 +22,15 @@ public class Matriculas implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idMatricula;
+
     private String fechas;
     private String estado;
 
-    
+    @ManyToOne
+    @JoinColumn(name = "idCurso")
+    private Curso curso;
+
+    @ManyToOne
+    @JoinColumn(name = "idEstudiante")
+    private Estudiante estudiante;
 }

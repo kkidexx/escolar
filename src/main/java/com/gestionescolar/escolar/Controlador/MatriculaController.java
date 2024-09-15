@@ -1,6 +1,8 @@
 package com.gestionescolar.escolar.Controlador;
 
 import com.gestionescolar.escolar.modelo.Matriculas;
+import com.gestionescolar.escolar.repositorio.CursoRepositorio;
+import com.gestionescolar.escolar.repositorio.EstudianteRepositorio;
 import com.gestionescolar.escolar.servicio1.ServicioMatriculas;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,12 +18,23 @@ public class MatriculaController {
     @Autowired
     private ServicioMatriculas servicioMatriculas;
 
+    @Autowired
+    private CursoRepositorio cursoRepository;
+
+    @Autowired
+    private EstudianteRepositorio estudianteRepository;
+
     // Listar todas las matrículas
     @GetMapping
     public String listarMatriculas(Model model) {
         List<Matriculas> matriculas = servicioMatriculas.listarMatriculas();
         model.addAttribute("matriculas", matriculas);
         model.addAttribute("nuevaMatricula", new Matriculas());
+
+        // Añadir listas de estudiantes y cursos al modelo
+        model.addAttribute("cursos", cursoRepository.findAll());
+        model.addAttribute("estudiantes", estudianteRepository.findAll());
+
         return "matriculas";
     }
 
@@ -30,6 +43,11 @@ public class MatriculaController {
     public String editarMatricula(@PathVariable("id") int id, Model model) {
         Matriculas matricula = servicioMatriculas.obtenerMatriculasPorId(id);
         model.addAttribute("matricula", matricula);
+
+        // Añadir listas de estudiantes y cursos al modelo
+        model.addAttribute("cursos", cursoRepository.findAll());
+        model.addAttribute("estudiantes", estudianteRepository.findAll());
+
         return "editar-matricula";
     }
 
